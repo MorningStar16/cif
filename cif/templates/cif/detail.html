@@ -1,0 +1,115 @@
+{% extends 'cif/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!-- Image Header -->
+
+
+<div class="card text-center">
+  <div class="card-header">
+    New Customer
+  </div>
+<div class="card-body">
+    <h5 class="card-title">Customer Information Form</h5>
+    <p class="card-text"></p>
+
+<!-- <form class="" method="post"> -->
+{% csrf_token %}
+
+<div class="container">
+
+  <!-- 1st row -->
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="Last name" id="lastname" name="lastname" value="Last Name: {{ customer.lastname }}" disabled>
+    </div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="First Name" id="firstname" name="firstname" value="{{ customer.firstname }}" disabled>
+    </div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="Middle Name" id="middlename" name="middlename" value="{{ customer.middlename }}" disabled>
+    </div>
+    <div class="col-sm-3">
+      <div class="dates">
+        <div class="input-group">
+          <input class="form-control start_date" type="text" placeholder="Birthday Ex. 03/16/1990" id="birthday" name="birthday" value="{{ customer.birthday }}" disabled>
+        <div class="input-group-append">
+        <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End 1st row -->
+
+  <!-- 2nd row -->
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <input type="text" class="form-control" placeholder="Permanent Home Address" id="homeaddress" name="homeaddress">
+    </div>
+    <div class="col-sm-3">
+      <select class="form-control" id="homeownership" name="homeownership">
+      <option value="blank" selected="">Select Home Ownership</option>
+      <option value="owned">Owned</option>
+      <option value="rented">Rented</option>
+      <option value="others">Others</option>
+    </select>
+    </div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="Phone" id="phone" name="phone">
+    </div>
+  </div>
+  <!-- End 2nd row -->
+
+  <!-- 3rd row -->
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="Business Name" id="businessname" name="businessname">
+    </div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="Specialty of Practice" id="specialtypractice" name="specialtypractice">
+    </div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="Tenure of Practice" id="tenurepractice" name="tenurepractice">
+    </div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="PRC No." id="prcno" name="prcno">
+    </div>
+  </div>
+  <!-- End 3rd row -->
+
+  <!-- 4th row -->
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <input type="text" class="form-control" placeholder="Business Address" id="businessaddress" name="businessaddress">
+    </div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="Phone" id="businessphone" name="businessphone">
+    </div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="Email" id="businessemail" name="businessemail">
+    </div>
+  </div>
+  <!-- End 4th row -->
+
+  <!-- 4th row -->
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <input type="text" class="form-control" placeholder="Authorized Contact Person" id="contactperson" name="contactperson">
+    </div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="Position" id="position" name="position">
+    </div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="Phone" id="contactpersonphone" name="contactpersonphone">
+    </div>
+  </div>
+  <!-- End 4th row -->
+
+<!-- <button class="btn btn-primary" type="submit">Submit</button> -->
+</div>
+<!-- </form> -->
+</div>
+</div>
+{% endblock content %}

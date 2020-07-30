@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- MDL -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+
+<div class="mdl-grid">
+  <div class="mdl-layout-spacer"></div>
+  <div class="mdl-cell mdl-cell--3-col"><img src="https://intercast-dental.net/wp-content/uploads/2020/02/intercast-logo-correct-size-1536x219.png" alt="Intercast Logo" height="30" width="200"></div>
+  <div class="mdl-layout-spacer"></div>
+</div>
+
+<div class="mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-cell mdl-cell--3-col"><h5>Customer Information Form</h5></div>
+    <div class="mdl-layout-spacer"></div>
+</div>
+
+<div class="mdl-grid mdl-shadow--6dp ">
+<form action="#">
+
+<!-- First Row -->
+<div class="mdl-grid">
+<div class="mdl-layout-spacer"></div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="lastname" value="{{ customer.lastname }}">
+      <label class="mdl-textfield__label" for="lastname">Last Name</label>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="firstname" value="{{ customer.firstname }}">
+      <label class="mdl-textfield__label" for="firstname">First Name</label>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="middlename" value="{{ customer.middlename }}">
+      <label class="mdl-textfield__label" for="middlename">Middle Name</label>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="birthday" value="{{ customer.birthday }}">
+      <label class="mdl-textfield__label" for="birthday">Date of Birth:</label>
+    </div>
+  </div>
+
+<div class="mdl-layout-spacer"></div>
+</div>
+<!-- End First Row -->
+
+<!-- Second Row -->
+<div class="mdl-grid">
+<div class="mdl-layout-spacer"></div>
+
+  <div class="mdl-cell mdl-cell--4-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="homeaddress" value="{{ customer.homeaddress }}">
+      <label class="mdl-textfield__label" for="homeaddress">Permanent Home Address</label>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="homeownership" value="{{ customer.homeownership }}">
+      <label class="mdl-textfield__label" for="homeownership">Home Ownership</label>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="phone" value="{{ customer.phone }}" >
+      <label class="mdl-textfield__label" for="phone">Phone</label>
+    </div>
+  </div>
+
+<div class="mdl-layout-spacer"></div>
+</div>
+<!-- End Second Row -->
+
+<!-- 2nd Row -->
+<div class="mdl-grid">
+<div class="mdl-layout-spacer"></div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="businessname" value="{{ customer.businessname }}">
+      <label class="mdl-textfield__label" for="businessname">Business Name</label>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="specialtypractice" value="{{ customer.specialtypractice }}">
+      <label class="mdl-textfield__label" for="specialtypractice">Specialty of Practice</label>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="tenurepractice" value="{{ customer.tenurepractice }}">
+      <label class="mdl-textfield__label" for="tenurepractice">Tenure of Practice</label>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="prcno" value="{{ customer.prcno }}">
+      <label class="mdl-textfield__label" for="prcno">PRC No.</label>
+    </div>
+  </div>
+
+<div class="mdl-layout-spacer"></div>
+</div>
+<!-- End 3rd Row -->
+
+<!-- 4th Row -->
+<div class="mdl-grid">
+<div class="mdl-layout-spacer"></div>
+
+  <div class="mdl-cell mdl-cell--4-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="businessaddress" value="{{ customer.businessaddress }}">
+      <label class="mdl-textfield__label" for="businessaddress">Business Address</label>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="businessphone" value="{{ customer.businessphone }}">
+      <label class="mdl-textfield__label" for="businessphone">Phone</label>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="businessemail" value="{{ customer.businessemail }}" >
+      <label class="mdl-textfield__label" for="businessemail">Email</label>
+    </div>
+  </div>
+
+<div class="mdl-layout-spacer"></div>
+</div>
+<!-- End 4th Row -->
+
+<!-- 5th Row -->
+<div class="mdl-grid">
+<div class="mdl-layout-spacer"></div>
+
+  <div class="mdl-cell mdl-cell--4-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="contactperson" value="{{ customer.contactperson }}">
+      <label class="mdl-textfield__label" for="contactperson">Contact Person</label>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="position" value="{{ customer.position }}">
+      <label class="mdl-textfield__label" for="position">Position</label>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="contactpersonphone" value="{{ customer.contactpersonphone }}" >
+      <label class="mdl-textfield__label" for="contactpersonphone">Phone</label>
+    </div>
+  </div>
+
+<div class="mdl-layout-spacer"></div>
+</div>
+<!-- End 5th Row -->
+
+</form>
+</div>
+
+  </body>
+</html>
