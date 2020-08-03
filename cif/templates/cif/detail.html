@@ -1,115 +1,352 @@
-{% extends 'cif/base.html' %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- MD Bootstrap -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 
-{% block content %}
-<!-- Image Header -->
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
 
-
-<div class="card text-center">
-  <div class="card-header">
-    New Customer
+  <div class="container text-center">
+    <h3> <a href="{% url 'customer:home' %}"> <img src="https://intercast-dental.net/wp-content/uploads/2020/02/intercast-logo-correct-size-1536x219.png" alt="Intercast Logo" height="30" width="200"> </a> </h3>
   </div>
-<div class="card-body">
-    <h5 class="card-title">Customer Information Form</h5>
-    <p class="card-text"></p>
 
-<!-- <form class="" method="post"> -->
-{% csrf_token %}
+  <div class="container text-center">
+    <h3>Customer Information Form</h3>
+  </div>
 
-<div class="container">
 
-  <!-- 1st row -->
-  <div class="form-group row">
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Last name" id="lastname" name="lastname" value="Last Name: {{ customer.lastname }}" disabled>
-    </div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="First Name" id="firstname" name="firstname" value="{{ customer.firstname }}" disabled>
-    </div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Middle Name" id="middlename" name="middlename" value="{{ customer.middlename }}" disabled>
-    </div>
-    <div class="col-sm-3">
-      <div class="dates">
-        <div class="input-group">
-          <input class="form-control start_date" type="text" placeholder="Birthday Ex. 03/16/1990" id="birthday" name="birthday" value="{{ customer.birthday }}" disabled>
-        <div class="input-group-append">
-        <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
+  <div class="container border border-light">
+
+      <!-- 1st Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-3">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input type="text" class="form-control form-control-sm" id="lastname" name="lastname" value="{{ customer.lastname }}" readonly>
+            <label for="lastname">Last Name</label>
+          </div>
         </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input type="text" class="form-control form-control-sm" id="firstname" name="firstname" value="{{ customer.firstname }}" readonly>
+            <label for="firstname">First Name</label>
+          </div>
+        </div>
+        <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3">
+        <!-- Material input -->
+        <div class="md-form form-group">
+          <input type="text" class="form-control form-control-sm" id="middlename" name="middlename" value="{{ customer.middlename }}" readonly>
+          <label for="middlename">Middle Name</label>
         </div>
       </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3">
+        <!-- Material input -->
+        <div class="md-form form-group">
+          <input type="text" class="form-control form-control-sm" id="birthday" name="birthday" value="{{ customer.birthday }}" readonly>
+          <label for="birthday">Birthday</label>
+        </div>
+      </div>
+      <!-- Grid column -->
+    </div>
+    <!-- End 1st Grid row -->
+
+    <!-- 2nd Grid row -->
+    <div class="form-row">
+      <!-- Grid column -->
+      <div class="col-md-4">
+        <!-- Material input -->
+        <div class="md-form form-group">
+          <input type="text" class="form-control form-control-sm" id="homeaddress" name="homeaddress" value="{{ customer.homeaddress }}" readonly>
+          <label for="homeaddress">Permanent Home Address</label>
+        </div>
+      </div>
+      <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-4">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="text" class="form-control form-control-sm" id="homeownership" name="homeownership" value="{{ customer.homeownership }}" readonly>
+        <label for="homeownership">Home Ownership</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-4">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="text" class="form-control form-control-sm" id="phone" name="birthday" value="{{ customer.phone }}" readonly>
+        <label for="phone">Phone</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+  <!-- End 2nd Grid row -->
+
+  <!-- 3rd Grid row -->
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-3">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="text" class="form-control form-control-sm" id="businessname" name="businessname" value="{{ customer.businessname }}" readonly>
+        <label for="businessname">Business Name</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-3">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="text" class="form-control form-control-sm" id="specialtypractice" name="specialtypractice" value="{{ customer.specialtypractice }}" readonly>
+        <label for="specialtypractice">Specialty of Practice</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+  <!-- Grid column -->
+  <div class="col-md-3">
+    <!-- Material input -->
+    <div class="md-form form-group">
+      <input type="text" class="form-control form-control-sm" id="tenurepractice" name="tenurepractice" value="{{ customer.tenurepractice }}" readonly>
+      <label for="tenurepractice">Tenure of Practice</label>
     </div>
   </div>
-  <!-- End 1st row -->
+  <!-- Grid column -->
 
-  <!-- 2nd row -->
-  <div class="form-group row">
-    <div class="col-sm-6">
-      <input type="text" class="form-control" placeholder="Permanent Home Address" id="homeaddress" name="homeaddress">
-    </div>
-    <div class="col-sm-3">
-      <select class="form-control" id="homeownership" name="homeownership">
-      <option value="blank" selected="">Select Home Ownership</option>
-      <option value="owned">Owned</option>
-      <option value="rented">Rented</option>
-      <option value="others">Others</option>
-    </select>
-    </div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Phone" id="phone" name="phone">
+  <!-- Grid column -->
+  <div class="col-md-3">
+    <!-- Material input -->
+    <div class="md-form form-group">
+      <input type="text" class="form-control form-control-sm" id="prcno" name="prcno" value="{{ customer.prcno }}" readonly>
+      <label for="prcno">PRC No.</label>
     </div>
   </div>
-  <!-- End 2nd row -->
-
-  <!-- 3rd row -->
-  <div class="form-group row">
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Business Name" id="businessname" name="businessname">
-    </div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Specialty of Practice" id="specialtypractice" name="specialtypractice">
-    </div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Tenure of Practice" id="tenurepractice" name="tenurepractice">
-    </div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="PRC No." id="prcno" name="prcno">
-    </div>
-  </div>
-  <!-- End 3rd row -->
-
-  <!-- 4th row -->
-  <div class="form-group row">
-    <div class="col-sm-6">
-      <input type="text" class="form-control" placeholder="Business Address" id="businessaddress" name="businessaddress">
-    </div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Phone" id="businessphone" name="businessphone">
-    </div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Email" id="businessemail" name="businessemail">
-    </div>
-  </div>
-  <!-- End 4th row -->
-
-  <!-- 4th row -->
-  <div class="form-group row">
-    <div class="col-sm-6">
-      <input type="text" class="form-control" placeholder="Authorized Contact Person" id="contactperson" name="contactperson">
-    </div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Position" id="position" name="position">
-    </div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Phone" id="contactpersonphone" name="contactpersonphone">
-    </div>
-  </div>
-  <!-- End 4th row -->
-
-<!-- <button class="btn btn-primary" type="submit">Submit</button> -->
+  <!-- Grid column -->
 </div>
-<!-- </form> -->
+<!-- End 3rd Grid row -->
+
+<!-- 4th Grid row -->
+<div class="form-row">
+  <!-- Grid column -->
+  <div class="col-md-4">
+    <!-- Material input -->
+    <div class="md-form form-group">
+      <input type="text" class="form-control form-control-sm" id="businessaddress" name="businessaddress" value="{{ customer.businessaddress }}" readonly>
+      <label for="businessaddress">Business Address</label>
+    </div>
+  </div>
+  <!-- Grid column -->
+
+<!-- Grid column -->
+<div class="col-md-4">
+  <!-- Material input -->
+  <div class="md-form form-group">
+    <input type="text" class="form-control form-control-sm" id="businessphone" name="businessphone" value="{{ customer.businessphone }}" readonly>
+    <label for="businessphone">Phone</label>
+  </div>
 </div>
+<!-- Grid column -->
+
+<!-- Grid column -->
+<div class="col-md-4">
+  <!-- Material input -->
+  <div class="md-form form-group">
+    <input type="text" class="form-control form-control-sm" id="businessemail" name="businessemail" value="{{ customer.businessemail }}" readonly>
+    <label for="businessemail">Email</label>
+  </div>
 </div>
-{% endblock content %}
+<!-- Grid column -->
+</div>
+<!-- End 4th Grid row -->
+
+<!-- 5th Grid row -->
+<div class="form-row">
+  <!-- Grid column -->
+  <div class="col-md-4">
+    <!-- Material input -->
+    <div class="md-form form-group">
+      <input type="text" class="form-control form-control-sm" id="contactperson" name="contactperson" value="{{ customer.contactperson }}" readonly>
+      <label for="contactperson">Contact Person</label>
+    </div>
+  </div>
+  <!-- Grid column -->
+
+<!-- Grid column -->
+<div class="col-md-4">
+  <!-- Material input -->
+  <div class="md-form form-group">
+    <input type="text" class="form-control form-control-sm" id="position" name="position" value="{{ customer.position }}" readonly>
+    <label for="position">Position</label>
+  </div>
+</div>
+<!-- Grid column -->
+
+<!-- Grid column -->
+<div class="col-md-4">
+  <!-- Material input -->
+  <div class="md-form form-group">
+    <input type="text" class="form-control form-control-sm" id="contactpersonphone" name="contactpersonphone" value="{{ customer.contactpersonphone }}" readonly>
+    <label for="contactpersonphone">Phone</label>
+  </div>
+</div>
+<!-- Grid column -->
+</div>
+<!-- End 5th Grid row -->
+
+  </div>
+
+  <br>
+  <div class="container d-flex justify-content-center">
+    <p> <h6>
+      I certify that all information and the supporting documents I submitted in connection with this information are complete, true and correct, and
+      the signatures therein are genuine. For purpose of this authority to verify and disclose information, I waive confidentiality of any such Information
+      relating to me under applicable confidentiality and data privacy laws, rules and regulations.
+    </h6> </p>
+  </div>
+
+  <br>
+  <div class="container d-flex justify-content-center">
+    <p class="h6">
+      THIS PORTION IS FOR INTERCAST HEALTHCARE CORPORATION USE ONLY
+    </p>
+  </div>
+
+  <div class="container border border-light">
+
+    <!-- 1st Grid row -->
+    <div class="form-row">
+      <!-- Grid column -->
+      <div class="col-md-4">
+        <!-- Material input -->
+        <div class="md-form form-group">
+          <input type="text" class="form-control form-control-sm" id="" name="" value=" ">
+          <label for="lastname">Sales Representative Signature and Date:</label>
+        </div>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2">
+        <!-- Material input -->
+        <div class="md-form form-group">
+          <input type="text" class="form-control form-control-sm" id="" name="" value=" ">
+          <label for="firstname">Area:</label>
+        </div>
+      </div>
+      <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-2">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="text" class="form-control form-control-sm" id="" name="" value=" ">
+        <label for="">Terms:</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-2">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="text" class="form-control form-control-sm" id="" name="" value=" ">
+        <label for="">Mode of Payment:</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-2">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="text" class="form-control form-control-sm" id="" name="" value=" ">
+        <label for="">Credit Limit:</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+  </div>
+  <!-- End 1st Grid row -->
+
+  <!-- 1st Grid row -->
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="text" class="form-control form-control-sm" id="" name="" value=" ">
+        <label for="lastname">Remarks/Endorsement/From Referring Sales Representative:</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-3">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="text" class="form-control form-control-sm" id="" name="" value=" ">
+        <label for="firstname">Approved:</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-3">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="text" class="form-control form-control-sm" id="" name="" value=" ">
+        <label for="firstname">Date:</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+</div>
+<!-- End 1st Grid row -->
+
+  </div>
+
+        <center>
+               <button class="btn btn-primary hidden-print" onclick="myFunction()"><i class="fas fa-print"></i> Print</button>
+  	    </center>
+
+        <script type="text/javascript">
+        function myFunction() {
+  window.print();
+}
+        </script>
+
+  </body>
+</html>
