@@ -15,7 +15,7 @@
     <h5 class="card-title">Customer Information Form</h5>
     <p class="card-text">Please fill out the form.</p>
 
-<form class="" method="post">
+<form class="" method="post" enctype="multipart/form-data">
 {% csrf_token %}
 
 <div class="container">
@@ -58,7 +58,7 @@
     </select>
     </div>
     <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Phone" id="phone" name="phone">
+      <input type="text" class="form-control" placeholder="Mobile/Tel No." id="phone" name="phone">
     </div>
   </div>
   <!-- End 2nd row -->
@@ -68,14 +68,23 @@
     <div class="col-sm-3">
       <input type="text" class="form-control" placeholder="Business Name" id="businessname" name="businessname">
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-2">
       <input type="text" class="form-control" placeholder="Specialty of Practice" id="specialtypractice" name="specialtypractice">
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-2">
       <input type="text" class="form-control" placeholder="Tenure of Practice" id="tenurepractice" name="tenurepractice">
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-2">
       <input type="text" class="form-control" placeholder="PRC No." id="prcno" name="prcno">
+    </div>
+    <div class="col-sm-3">
+      <select class="form-control" id="businesstype" name="businesstype">
+      <option value="blank" selected="">Select Business Type</option>
+      <option value="Clinic">Clinic</option>
+      <option value="Laboratory">Laboratory</option>
+      <option value="Dental Supplies">Dental Supplies</option>
+      <option value="others">Others</option>
+    </select>
     </div>
   </div>
   <!-- End 3rd row -->
@@ -86,7 +95,7 @@
       <input type="text" class="form-control" placeholder="Business Address" id="businessaddress" name="businessaddress">
     </div>
     <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Phone" id="businessphone" name="businessphone">
+      <input type="text" class="form-control" placeholder="Mobile/Tel No." id="businessphone" name="businessphone">
     </div>
     <div class="col-sm-3">
       <input type="text" class="form-control" placeholder="Email" id="businessemail" name="businessemail">
@@ -94,7 +103,7 @@
   </div>
   <!-- End 4th row -->
 
-  <!-- 4th row -->
+  <!-- 5th row -->
   <div class="form-group row">
     <div class="col-sm-6">
       <input type="text" class="form-control" placeholder="Authorized Contact Person" id="contactperson" name="contactperson">
@@ -103,10 +112,36 @@
       <input type="text" class="form-control" placeholder="Position" id="position" name="position">
     </div>
     <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Phone" id="contactpersonphone" name="contactpersonphone">
+      <input type="text" class="form-control" placeholder="Mobile/Tel No." id="contactpersonphone" name="contactpersonphone">
     </div>
   </div>
-  <!-- End 4th row -->
+  <!-- End 5th row -->
+
+  <!-- 6th row -->
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <div class="custom-file">
+          <input type="file" class="custom-file-input" id="image1" name="image1" accept="image/*">
+          <label class="custom-file-label" for="customFile">Any government ID</label>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="custom-file">
+          <input type="file" class="custom-file-input" id="image2" name="image2" accept="image/*">
+          <label class="custom-file-label" for="customFile">DTI if any</label>
+      </div>
+    </div>
+  </div>
+  <!-- End 5th row -->
+
+
+
+
+
+
+
+
 
 <button class="btn btn-primary" type="submit">Submit</button>
 </div>
@@ -117,5 +152,12 @@
 
 
 
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
 
 {% endblock content %}

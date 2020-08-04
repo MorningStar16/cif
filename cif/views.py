@@ -15,17 +15,20 @@ from django.contrib.auth.decorators import login_required
 #        user = request.user
 #        form.save()
 #    return render(request, 'cif/home.html', {'form':form})
-@login_required(login_url='/login/')
+
+#@login_required(login_url='/login/')
 def home(request):
     if request.method == 'GET':
         return render(request, 'cif/home.html')
     else:
         try:
-            form = CustomerForm(request.POST)
+            form = CustomerForm(request.POST, request.FILES)
             newcustomer = form.save(commit=False)
             newcustomer.created_by = request.user
+            newcustomer.image1 = form.cleaned_data['image1']
+            newcustomer.image2 = form.cleaned_data['image2']
             newcustomer.save()
-            return redirect('home')
+            return redirect('customer:home')
         except ValueError:
             return render(request, 'cif/home.html', {'form':CustomerForm(), 'error':'Bad data passed in. Try again.'})
 

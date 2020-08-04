@@ -4,8 +4,11 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
+def image_upload(instance, filename):
+    return 'cif/images/%s/%s' % (instance.lastname.pk, filename)
+
 class Customer(models.Model):
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     lastname = models.CharField(max_length=200)
     firstname = models.CharField(max_length=200)
     middlename = models.CharField(max_length=200, blank=True, null=True)
@@ -26,6 +29,9 @@ class Customer(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     sales_employee = models.CharField(max_length=200, default='Intercast')
     is_sap_encoded = models.BooleanField(default=False)
+    image1 = models.ImageField(upload_to=image_upload, blank=True, null=True)
+    image2 = models.ImageField(upload_to=image_upload, blank=True, null=True)
+    businesstype = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.lastname
