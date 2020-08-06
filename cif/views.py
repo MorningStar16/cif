@@ -23,10 +23,10 @@ def home(request):
     else:
         try:
             form = CustomerForm(request.POST, request.FILES)
-            newcustomer = form.save(commit=False)
+            newcustomer = form.save(commit=True)
             newcustomer.created_by = request.user
-            newcustomer.image1 = form.cleaned_data['image1']
-            newcustomer.image2 = form.cleaned_data['image2']
+            newcustomer.image1 = request.FILES['image1']
+            newcustomer.image2 = request.FILES['image2']
             newcustomer.save()
             return redirect('customer:home')
         except ValueError:

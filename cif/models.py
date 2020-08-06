@@ -4,10 +4,33 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
-def image_upload(instance, filename):
-    return 'cif/images/%s/%s' % (instance.lastname.pk, filename)
+class Region(models.Model):
+	name = models.CharField(max_length=50)
+
+	def __str__(self):
+		return self.name
+
+class Province(models.Model):
+	region = models.ForeignKey(Region, on_delete=models.CASCADE)
+	name = models.CharField(max_length=30)
+
+	def __str__(self):
+		return self.name
+
+class City(models.Model):
+	region = models.ForeignKey(Region, on_delete=models.CASCADE)
+	province = models.ForeignKey(Province, on_delete=models.CASCADE)
+	name = models.CharField(max_length=30)
+
+	def __str__(self):
+		return self.name
+
 
 class Customer(models.Model):
+
+    def upload_image(self, filename):
+         return 'cif/%s/%s' % (self.id, filename)
+
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     lastname = models.CharField(max_length=200)
     firstname = models.CharField(max_length=200)
@@ -29,9 +52,12 @@ class Customer(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     sales_employee = models.CharField(max_length=200, default='Intercast')
     is_sap_encoded = models.BooleanField(default=False)
-    image1 = models.ImageField(upload_to=image_upload, blank=True, null=True)
-    image2 = models.ImageField(upload_to=image_upload, blank=True, null=True)
+    image1 = models.ImageField(upload_to=upload_image, blank=True, null=True)
+    image2 = models.ImageField(upload_to=upload_image, blank=True, null=True)
     businesstype = models.CharField(max_length=200, blank=True, null=True)
+    region = models.ForeignKey(Region, on_delete=models.SET_NULL, null=True)
+    province = models.ForeignKey(Province, on_delete=models.SET_NULL, null=True)
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.lastname
