@@ -33,7 +33,7 @@ class Customer(models.Model):
 	lastname = models.CharField(max_length=200)
 	firstname = models.CharField(max_length=200)
 	middlename = models.CharField(max_length=200, blank=True, null=True)
-	birthday = models.DateField(blank=True, null=True)
+	birthday = models.CharField(max_length=200, blank=True, null=True)
 	homeaddress = models.TextField(blank=True, null=True)
 	homeownership = models.CharField(max_length=200)
 	phone = models.CharField(max_length=200, blank=True, null=True)
@@ -53,9 +53,9 @@ class Customer(models.Model):
 	image1 = models.ImageField(upload_to=upload_image, blank=True, null=True)
 	image2 = models.ImageField(upload_to=upload_image, blank=True, null=True)
 	businesstype = models.CharField(max_length=200, blank=True, null=True)
-	region = models.ForeignKey(Region, on_delete=models.SET_NULL, null=True)
-	province = models.ForeignKey(Province, on_delete=models.SET_NULL, null=True)
-	city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
+	region = models.ForeignKey(Region, on_delete=models.SET_NULL, null=True, blank=True)
+	province = models.ForeignKey(Province, on_delete=models.SET_NULL, null=True, blank=True)
+	city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True)
 
 	def save(self, *args, **kwargs):
 		if self.id is None:

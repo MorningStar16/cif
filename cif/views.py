@@ -24,7 +24,27 @@ class HomeView(CreateView):
     model = Customer
     form_class = CustomerForm
     success_url = reverse_lazy('customer:customer')
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['regions'] = Region.objects.all()
+        return context
     template_name = 'cif/home.html'
+
+
+
+def load_provinces(request):
+    region_id = request.GET.get('region')
+    provinces = Province.objects.filter(region_id=region_id).order_by('name')
+    context = {'provinces': provinces}
+    return render(request, 'cif/province_ddl.html', context)
+
+def load_cities(request):
+    province_id = request.GET.get('province')
+    cities = City.objects.filter(province_id=province_id).order_by('name')
+    context = {'cities': cities}
+    return render(request, 'cif/city_ddl.html', context)
 
 
 #@login_required(login_url='/login/')

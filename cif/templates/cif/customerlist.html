@@ -3,47 +3,53 @@
 
 
 {% block content %}
+<div class="row example mb-5">
 
-<div class="d-flex justify-content-center">
-<div class="card text-center">
-  <div class="card-header">
-    Customer List
-  </div>
-<div class="card-body">
+</div>
+<div class="row example mb-5">
 
-  <table class="mdl-data-table mdl-js-data-table mdl-data-table-default-non-numeric mdl-shadow--2dp">
+</div>
+
+
+<div class="row d-flex justify-content-center">
+
+  <!--Grid column-->
+  <div class="col-md-8">
+
+<div class='table-responsive'>
+  <table class="table table-sm table-bordered table-striped table-hover">
     <thead>
       <tr>
-        <th class="mdl-data-table__cell--non-numeric">ID</th>
-        <th class="mdl-data-table__cell--non-numeric">Last Name</th>
-        <th class="mdl-data-table__cell--non-numeric">First Name</th>
-        <th class="mdl-data-table__cell--non-numeric">Middle Name</th>
-        <th class="mdl-data-table__cell--non-numeric">Business Name</th>
-        <th class="mdl-data-table__cell--non-numeric">Sales Employee</th>
-        <th class="mdl-data-table__cell--non-numeric">Encoded in SAP</th>
-        <th class="mdl-data-table__cell--non-numeric">Action</th>
+        <th class="text-center">ID</th>
+        <th class="text-center">Last Name</th>
+        <th class="text-center">First Name</th>
+        <th class="text-center">Middle Name</th>
+        <th class="text-center">Business Name</th>
+        <th class="text-center">Sales Employee</th>
+        <th class="text-center">Encoded in SAP</th>
+        <th class="text-center">Action</th>
       </tr>
     </thead>
     <tbody>
       {% for b in obj %}
       <tr>
-        <td class="mdl-data-table__cell--non-numeric">{{ b.id }}</td>
-        <td class="mdl-data-table__cell--non-numeric">{{ b.lastname }}</td>
-        <td class="mdl-data-table__cell--non-numeric">{{ b.firstname }}</td>
-        <td class="mdl-data-table__cell--non-numeric">{{ b.middlename }}</td>
-        <td class="mdl-data-table__cell--non-numeric">{{ b.businessname }}</td>
-        <td class="mdl-data-table__cell--non-numeric">{{ b.sales_employee }}</td>
-        <td class="mdl-data-table__cell--non-numeric">{{ b.is_sap_encoded }}</td>
-        <td class="mdl-data-table__cell--non-numeric">
-          <a href="{% url 'customer:detail' b.id %}"><span class="material-icons">visibility</span></a>
+        <th class="text-center" scope="row">{{ b.id }}</th>
+        <td class="text-center">{{ b.lastname }}</td>
+        <td class="text-center">{{ b.firstname }}</td>
+        <td class="text-center">{{ b.middlename }}</td>
+        <td class="text-center">{{ b.businessname }}</td>
+        <td class="text-center">{{ b.sales_employee }}</td>
+        <td class="text-center">{{ b.is_sap_encoded }}</td>
+        <td class="text-center">
+          <a href="{% url 'customer:detail' b.id %}"><span class="material-icons"><i class="fas fa-eye"></i></span></a>
         </td>
       </tr>
 
     </tbody>
     {% endfor %}
   </table>
-
 </div>
+
 </div>
 </div>
 

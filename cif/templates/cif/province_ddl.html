@@ -1,0 +1,6 @@
+
+<option value="" disabled selected>Select Province</option>
+{% for province in provinces %}
+<option value="{{ province.pk }}">{{ province.name }}</option>
+
+{% endfor %}

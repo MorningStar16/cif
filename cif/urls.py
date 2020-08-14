@@ -16,6 +16,9 @@ urlpatterns = [
     path('login/', views.loginuser, name='login'),
     path('logout/', views.logoutuser, name='logoutuser'),
 
+    #AJAX
+    path('ajax/load-province/', views.load_provinces, name='ajax_load_provinces'),
+    path('ajax/load-city/', views.load_cities, name='ajax_load_cities'),
 
 ]
 

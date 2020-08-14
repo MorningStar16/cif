@@ -15,7 +15,7 @@
     <h5 class="card-title">Customer Information Form</h5>
     <p class="card-text">Please fill out the form.</p>
 
-<form class="" method="post" enctype="multipart/form-data">
+<form class="" method="post" id="customerForm" enctype="multipart/form-data" data-provinces-url="{% url 'customer:ajax_load_provinces' %}" novalidate>
 {% csrf_token %}
 
 <div class="container">
@@ -23,18 +23,18 @@
   <!-- 1st row -->
   <div class="form-group row">
     <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Last name" id="lastname" name="lastname" required>
+      <input type="text" class="form-control form-control form-control-sm" placeholder="Last name" id="lastname" name="lastname" required>
     </div>
     <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="First Name" id="firstname" name="firstname" required>
+      <input type="text" class="form-control form-control-sm" placeholder="First Name" id="firstname" name="firstname" required>
     </div>
     <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Middle Name" id="middlename" name="middlename">
+      <input type="text" class="form-control form-control-sm" placeholder="Middle Name" id="middlename" name="middlename">
     </div>
     <div class="col-sm-3">
       <div class="dates">
         <div class="input-group">
-          <input class="form-control start_date" type="text" placeholder="Birthday Ex. 03/16/1990" id="birthday" name="birthday">
+          <input class="form-control form-control-sm" type="text" placeholder="Birthday Ex. 03/16/1990" id="birthday" name="birthday">
         <div class="input-group-append">
         <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
         </div>
@@ -44,13 +44,38 @@
   </div>
   <!-- End 1st row -->
 
+
+  <!-- 2nd row -->
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <select class="form-control form-control-sm" id="region" name="region">
+        <option value="" disabled selected>Select Region</option>
+        {% for region in regions %}
+        <option value="{{ region.pk }}">{{ region.name }}</option>
+        {% endfor %}
+      </select>
+      </div>
+      <div class="col-sm-3">
+      <select class="form-control form-control-sm" id="province" name="province">
+        {% include "cif/province_ddl.html" %}
+      </select>
+      </div>
+      <div class="col-sm-3">
+      <select class="form-control form-control-sm" id="city" name="city">
+        {% include "cif/city_ddl.html" %}
+      </select>
+    </div>
+  </div>
+  <!-- End 2nd row -->
+
+
   <!-- 2nd row -->
   <div class="form-group row">
     <div class="col-sm-6">
-      <input type="text" class="form-control" placeholder="Permanent Home Address" id="homeaddress" name="homeaddress">
+      <input type="text" class="form-control form-control-sm" placeholder="Permanent Home Address" id="homeaddress" name="homeaddress">
     </div>
     <div class="col-sm-3">
-      <select class="form-control" id="homeownership" name="homeownership">
+      <select class="form-control form-control-sm" id="homeownership" name="homeownership">
       <option value="blank" selected="">Select Home Ownership</option>
       <option value="owned">Owned</option>
       <option value="rented">Rented</option>
@@ -58,51 +83,28 @@
     </select>
     </div>
     <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Mobile/Tel No." id="phone" name="phone">
+      <input type="text" class="form-control form-control-sm" placeholder="Mobile/Tel No." id="phone" name="phone">
     </div>
   </div>
   <!-- End 2nd row -->
 
-  <!-- 2nd row -->
-  <div class="form-group row">
-
-    <div class="col-sm-3">
-      <select class="form-control" id="region" name="region">
-        <option value="" selected="">Select Region</option>
-      </select>
-    </div>
-    <div class="col-sm-3">
-      <select class="form-control" id="province" name="province">
-    </select>
-    </div>
-    <div class="col-sm-3">
-      <select class="form-control" id="city" name="city">
-    </select>
-    </div>
-    <div class="col-sm-3">
-      <select class="form-control" id="barangay" name="barangay">
-    </select>
-    </div>
-
-  </div>
-  <!-- End 2nd row -->
 
   <!-- 3rd row -->
   <div class="form-group row">
     <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Business Name" id="businessname" name="businessname">
+      <input type="text" class="form-control form-control-sm" placeholder="Business Name" id="businessname" name="businessname">
     </div>
     <div class="col-sm-2">
-      <input type="text" class="form-control" placeholder="Specialty of Practice" id="specialtypractice" name="specialtypractice">
+      <input type="text" class="form-control form-control-sm" placeholder="Specialty of Practice" id="specialtypractice" name="specialtypractice">
     </div>
     <div class="col-sm-2">
-      <input type="text" class="form-control" placeholder="Tenure of Practice" id="tenurepractice" name="tenurepractice">
+      <input type="text" class="form-control form-control-sm" placeholder="Tenure of Practice" id="tenurepractice" name="tenurepractice">
     </div>
     <div class="col-sm-2">
-      <input type="text" class="form-control" placeholder="PRC No." id="prcno" name="prcno">
+      <input type="text" class="form-control form-control-sm" placeholder="PRC No." id="prcno" name="prcno">
     </div>
     <div class="col-sm-3">
-      <select class="form-control" id="businesstype" name="businesstype">
+      <select class="form-control form-control-sm" id="businesstype" name="businesstype">
       <option value="blank" selected="">Select Business Type</option>
       <option value="Clinic">Clinic</option>
       <option value="Laboratory">Laboratory</option>
@@ -116,13 +118,13 @@
   <!-- 4th row -->
   <div class="form-group row">
     <div class="col-sm-6">
-      <input type="text" class="form-control" placeholder="Business Address" id="businessaddress" name="businessaddress">
+      <input type="text" class="form-control form-control-sm" placeholder="Business Address" id="businessaddress" name="businessaddress">
     </div>
     <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Mobile/Tel No." id="businessphone" name="businessphone">
+      <input type="text" class="form-control form-control-sm" placeholder="Mobile/Tel No." id="businessphone" name="businessphone">
     </div>
     <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Email" id="businessemail" name="businessemail">
+      <input type="text" class="form-control form-control-sm" placeholder="Email" id="businessemail" name="businessemail">
     </div>
   </div>
   <!-- End 4th row -->
@@ -130,13 +132,13 @@
   <!-- 5th row -->
   <div class="form-group row">
     <div class="col-sm-6">
-      <input type="text" class="form-control" placeholder="Authorized Contact Person" id="contactperson" name="contactperson">
+      <input type="text" class="form-control form-control-sm" placeholder="Authorized Contact Person" id="contactperson" name="contactperson">
     </div>
     <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Position" id="position" name="position">
+      <input type="text" class="form-control form-control-sm" placeholder="Position" id="position" name="position">
     </div>
     <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Mobile/Tel No." id="contactpersonphone" name="contactpersonphone">
+      <input type="text" class="form-control form-control-sm" placeholder="Mobile/Tel No." id="contactpersonphone" name="contactpersonphone">
     </div>
   </div>
   <!-- End 5th row -->
@@ -145,26 +147,19 @@
   <div class="form-group row">
     <div class="col-sm-6">
       <div class="custom-file">
-          <input type="file" class="custom-file-input" id="image1" name="image1" accept="image/*">
+          <input type="file" class="custom-file-input form-control-sm" id="image1" name="image1" accept="image/*">
           <label class="custom-file-label" for="customFile">Any government ID</label>
       </div>
     </div>
 
     <div class="col-sm-6">
       <div class="custom-file">
-          <input type="file" class="custom-file-input" id="image2" name="image2" accept="image/*">
+          <input type="file" class="custom-file-input form-control-sm" id="image2" name="image2" accept="image/*">
           <label class="custom-file-label" for="customFile">DTI if any</label>
       </div>
     </div>
   </div>
   <!-- End 5th row -->
-
-
-
-
-
-
-
 
 
 <button class="btn btn-primary" type="submit">Submit</button>
@@ -173,48 +168,6 @@
 </div>
 </div>
 
-
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
-<script type="text/javascript" src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations.js"></script>
-<script type="text/javascript">
-
-    var my_handlers = {
-
-        fill_provinces:  function(){
-
-            var region_code = $(this).val();
-            $('#province').ph_locations('fetch_list', [{"region_code": region_code}]);
-
-        },
-
-        fill_cities: function(){
-
-            var province_code = $(this).val();
-            $('#city').ph_locations( 'fetch_list', [{"province_code": province_code}]);
-        },
-
-
-        fill_barangays: function(){
-
-            var city_code = $(this).val();
-            $('#barangay').ph_locations('fetch_list', [{"city_code": city_code}]);
-        }
-    };
-
-    $(function(){
-        $('#region').on('change', my_handlers.fill_provinces);
-        $('#province').on('change', my_handlers.fill_cities);
-        $('#city').on('change', my_handlers.fill_barangays);
-
-        $('#region').ph_locations({'location_type': 'regions'});
-        $('#province').ph_locations({'location_type': 'provinces'});
-        $('#city').ph_locations({'location_type': 'cities'});
-        $('#barangay').ph_locations({'location_type': 'barangays'});
-
-        $('#region').ph_locations('fetch_list');
-    });
-</script>
 
 
 
