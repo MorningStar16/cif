@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView, ListView, CreateView
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
 
 # Create your views here.
 
@@ -20,10 +21,10 @@ from django.urls import reverse_lazy
 #    return render(request, 'cif/home.html', {'form':form})
 
 
-class HomeView(CreateView):
+class HomeView(SuccessMessageMixin, CreateView):
     model = Customer
     form_class = CustomerForm
-    success_url = reverse_lazy('customer:customer')
+    success_url = reverse_lazy('customer:home')
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
@@ -31,6 +32,7 @@ class HomeView(CreateView):
         context['regions'] = Region.objects.all()
         return context
     template_name = 'cif/home.html'
+    success_message = "Customer details was created successfully"
 
 
 
